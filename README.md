@@ -10,6 +10,14 @@
 
 ---
 
+## 📸 Platform Dashboard Preview
+
+![PulseRevOps Live Dashboard](./dashboard-preview.png)
+
+*Real-time ARR Portfolio Risk Allocation, 5-Week Telemetry & Health Score Trajectory, and Account Health & AI Risk Detection Radar.*
+
+---
+
 ## 🎯 Executive Summary & Engineering Vision
 
 As an **Engineering Leader**, building value-driven AI software requires grounding predictive models and LLMs in core SaaS unit economics—specifically **Net Dollar Retention (NDR)**, **Gross Churn Avoidance**, and **CSM Operational Efficiency**.
@@ -70,7 +78,7 @@ PulseRevOps bridges raw product analytics with real-time operational workflows, 
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone https://github.com/YourUsername/pulse-revops-ai.git
+git clone https://github.com/AnkushMulkar/pulse-revops-ai.git
 cd pulse-revops-ai
 npm install
 ```
