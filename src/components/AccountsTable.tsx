@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import type { Account, RiskCategory } from '../types/revops';
 import {
-  Filter,
-  ArrowUpDown,
-  Sparkles,
-  AlertTriangle,
   Building,
   TrendingDown,
   TrendingUp,
@@ -47,18 +43,18 @@ export const AccountsTable: React.FC<AccountsTableProps> = ({
   const getBadgeStyle = (category: RiskCategory) => {
     switch (category) {
       case 'CRITICAL':
-        return 'badge-critical';
+        return '#f87171';
       case 'AT_RISK':
-        return 'badge-at-risk';
+        return '#fbbf24';
       case 'HEALTHY':
-        return 'badge-healthy';
+        return '#cbd5e1';
       case 'EXPANSION':
-        return 'badge-expansion';
+        return '#ffffff';
     }
   };
 
   return (
-    <div className="glass-card" style={{ padding: '1.5rem', marginBottom: '2rem' }}>
+    <div style={{ background: '#111827', borderRadius: '10px', padding: '1.5rem', marginBottom: '2rem', border: 'none' }}>
       <div
         style={{
           display: 'flex',
@@ -70,66 +66,64 @@ export const AccountsTable: React.FC<AccountsTableProps> = ({
         }}
       >
         <div>
-          <h2 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <h2 style={{ fontSize: '1.15rem', fontWeight: 500, color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             Account Health & AI Risk Detection Radar
             <span
               style={{
-                fontSize: '0.75rem',
-                background: 'rgba(255, 46, 76, 0.2)',
-                color: '#ff2e4c',
+                fontSize: '0.72rem',
+                background: 'rgba(255, 255, 255, 0.05)',
+                color: '#94a3b8',
                 padding: '2px 8px',
                 borderRadius: '12px',
-                fontWeight: 600,
+                fontWeight: 400,
               }}
             >
               {sorted.length} Accounts Listed
             </span>
           </h2>
-          <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+          <p style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 400 }}>
             Real-time telemetry, sentiment analysis, and AI-prescribed next best actions
           </p>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(255, 255, 255, 0.04)', padding: '0.3rem 0.6rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-            <Building size={14} color="var(--text-muted)" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: '#18191d', padding: '0.35rem 0.65rem', borderRadius: '6px' }}>
+            <Building size={14} color="#94a3b8" />
             <select
               value={selectedSegment}
               onChange={(e) => setSelectedSegment(e.target.value)}
-              style={{ background: 'transparent', color: '#fff', border: 'none', outline: 'none', fontSize: '0.8rem', cursor: 'pointer' }}
+              style={{ background: 'transparent', color: '#f8fafc', border: 'none', outline: 'none', fontSize: '0.8rem', cursor: 'pointer' }}
             >
-              <option value="ALL" style={{ background: '#090d16' }}>All Segments</option>
-              <option value="Enterprise" style={{ background: '#090d16' }}>Enterprise</option>
-              <option value="Mid-Market" style={{ background: '#090d16' }}>Mid-Market</option>
-              <option value="SMB" style={{ background: '#090d16' }}>SMB</option>
+              <option value="ALL">All Segments</option>
+              <option value="Enterprise">Enterprise</option>
+              <option value="Mid-Market">Mid-Market</option>
+              <option value="SMB">SMB</option>
             </select>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(255, 255, 255, 0.04)', padding: '0.3rem 0.6rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-            <Filter size={14} color="var(--text-muted)" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: '#18191d', padding: '0.35rem 0.65rem', borderRadius: '6px' }}>
             <select
               value={selectedRisk}
               onChange={(e) => setSelectedRisk(e.target.value)}
-              style={{ background: 'transparent', color: '#fff', border: 'none', outline: 'none', fontSize: '0.8rem', cursor: 'pointer' }}
+              style={{ background: 'transparent', color: '#f8fafc', border: 'none', outline: 'none', fontSize: '0.8rem', cursor: 'pointer' }}
             >
-              <option value="ALL" style={{ background: '#090d16' }}>All Health Tiers</option>
-              <option value="CRITICAL" style={{ background: '#090d16' }}>Critical Risk</option>
-              <option value="AT_RISK" style={{ background: '#090d16' }}>At-Risk Watchlist</option>
-              <option value="HEALTHY" style={{ background: '#090d16' }}>Healthy Tiers</option>
-              <option value="EXPANSION" style={{ background: '#090d16' }}>Expansion Candidates</option>
+              <option value="ALL">All Health Tiers</option>
+              <option value="CRITICAL">Critical Risk</option>
+              <option value="AT_RISK">At-Risk Watchlist</option>
+              <option value="HEALTHY">Healthy Tiers</option>
+              <option value="EXPANSION">Expansion Candidates</option>
             </select>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(255, 255, 255, 0.04)', padding: '0.3rem 0.6rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-            <ArrowUpDown size={14} color="var(--text-muted)" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: '#18191d', padding: '0.35rem 0.65rem', borderRadius: '6px' }}>
             <select
               value={sortBy}
               onChange={(e: any) => setSortBy(e.target.value)}
-              style={{ background: 'transparent', color: '#fff', border: 'none', outline: 'none', fontSize: '0.8rem', cursor: 'pointer' }}
+              style={{ background: 'transparent', color: '#f8fafc', border: 'none', outline: 'none', fontSize: '0.8rem', cursor: 'pointer' }}
             >
-              <option value="health" style={{ background: '#090d16' }}>Sort: Risk Severity (Lowest Health First)</option>
-              <option value="arr" style={{ background: '#090d16' }}>Sort: Highest ARR ($)</option>
-              <option value="velocity" style={{ background: '#090d16' }}>Sort: Usage Drop %</option>
+              <option value="health">Sort: Risk Severity</option>
+              <option value="arr">Sort: Highest ARR ($)</option>
+              <option value="velocity">Sort: Usage Drop %</option>
             </select>
           </div>
         </div>
@@ -140,9 +134,9 @@ export const AccountsTable: React.FC<AccountsTableProps> = ({
           <thead>
             <tr
               style={{
-                borderBottom: '1px solid var(--border-color)',
-                color: 'var(--text-muted)',
-                fontSize: '0.78rem',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                color: '#64748b',
+                fontSize: '0.75rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
               }}
@@ -151,8 +145,8 @@ export const AccountsTable: React.FC<AccountsTableProps> = ({
               <th style={{ padding: '0.75rem 1rem' }}>ARR ($)</th>
               <th style={{ padding: '0.75rem 1rem' }}>Health Index</th>
               <th style={{ padding: '0.75rem 1rem' }}>Usage Velocity</th>
-              <th style={{ padding: '0.75rem 1rem' }}>Seats & Tickets</th>
-              <th style={{ padding: '0.75rem 1rem' }}>CSM Sponsor</th>
+              <th style={{ padding: '0.75rem 1rem' }}>Seats</th>
+              <th style={{ padding: '0.75rem 1rem' }}>CSM</th>
               <th style={{ padding: '0.75rem 1rem' }}>AI Diagnosis</th>
               <th style={{ padding: '0.75rem 1rem', textAlign: 'right' }}>Action</th>
             </tr>
@@ -162,55 +156,40 @@ export const AccountsTable: React.FC<AccountsTableProps> = ({
               <tr
                 key={account.id}
                 style={{
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.03)',
                   transition: 'background 0.15s ease',
                   cursor: 'pointer',
                 }}
-                className="table-row-hover"
                 onClick={() => onSelectAccount(account)}
               >
                 <td style={{ padding: '0.9rem 1rem' }}>
-                  <div style={{ fontWeight: 700, color: '#fff', fontSize: '0.92rem' }}>
+                  <div style={{ fontWeight: 500, color: '#f8fafc', fontSize: '0.9rem' }}>
                     {account.name}
                   </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                     <span>{account.domain}</span>
                     <span>•</span>
-                    <span
-                      style={{
-                        padding: '1px 6px',
-                        borderRadius: '4px',
-                        background: 'rgba(255, 255, 255, 0.06)',
-                        color: 'var(--text-muted)',
-                      }}
-                    >
-                      {account.segment}
-                    </span>
+                    <span>{account.segment}</span>
                   </div>
                 </td>
 
-                <td style={{ padding: '0.9rem 1rem', fontWeight: 700, color: '#fff', fontFamily: 'var(--font-mono)' }}>
+                <td style={{ padding: '0.9rem 1rem', fontWeight: 500, color: '#f8fafc', fontFamily: 'var(--font-mono)' }}>
                   ${(account.arr / 1000).toFixed(0)}k
                 </td>
 
                 <td style={{ padding: '0.9rem 1rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                    <span
-                      className={`badge-critical ${getBadgeStyle(account.riskCategory)}`}
-                      style={{
-                        padding: '3px 8px',
-                        borderRadius: '6px',
-                        fontWeight: 700,
-                        fontSize: '0.8rem',
-                        fontFamily: 'var(--font-mono)',
-                      }}
-                    >
-                      {account.healthScore}/100
-                    </span>
-                    <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontWeight: 600 }}>
-                      {account.riskCategory}
-                    </span>
-                  </div>
+                  <span
+                    style={{
+                      padding: '2px 6px',
+                      borderRadius: '4px',
+                      fontSize: '0.78rem',
+                      fontFamily: 'var(--font-mono)',
+                      color: getBadgeStyle(account.riskCategory),
+                      background: 'rgba(255, 255, 255, 0.04)',
+                    }}
+                  >
+                    {account.healthScore}/100 • {account.riskCategory}
+                  </span>
                 </td>
 
                 <td style={{ padding: '0.9rem 1rem' }}>
@@ -219,35 +198,22 @@ export const AccountsTable: React.FC<AccountsTableProps> = ({
                       display: 'flex',
                       alignItems: 'center',
                       gap: '0.35rem',
-                      color: account.telemetryVelocity < 0 ? '#ff2e4c' : '#e4e4e7',
-                      fontWeight: 600,
+                      color: account.telemetryVelocity < 0 ? '#94a3b8' : '#f8fafc',
                       fontSize: '0.82rem',
                     }}
                   >
                     {account.telemetryVelocity < 0 ? (
-                      <TrendingDown size={15} color="#ff2e4c" />
+                      <TrendingDown size={14} color="#94a3b8" />
                     ) : (
-                      <TrendingUp size={15} color="#ff2e4c" />
+                      <TrendingUp size={14} color="#ffffff" />
                     )}
                     {account.telemetryVelocity > 0 ? '+' : ''}
                     {account.telemetryVelocity}%
                   </div>
                 </td>
 
-                <td style={{ padding: '0.9rem 1rem', fontSize: '0.8rem' }}>
-                  <div style={{ color: 'var(--text-muted)' }}>
-                    <span style={{ color: '#fff', fontWeight: 600 }}>{account.activeUsers}</span> / {account.totalLicensedSeats} seats
-                  </div>
-                  {account.unresolvedP1Tickets > 0 ? (
-                    <div style={{ color: '#ff2e4c', fontSize: '0.73rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                      <AlertTriangle size={12} color="#ff2e4c" />
-                      {account.unresolvedP1Tickets} Unresolved P1 Ticket
-                    </div>
-                  ) : (
-                    <div style={{ color: 'var(--text-dim)', fontSize: '0.73rem' }}>
-                      {account.supportTicketCount} tickets logged
-                    </div>
-                  )}
+                <td style={{ padding: '0.9rem 1rem', fontSize: '0.8rem', color: '#94a3b8' }}>
+                  {account.activeUsers} / {account.totalLicensedSeats}
                 </td>
 
                 <td style={{ padding: '0.9rem 1rem' }}>
@@ -255,9 +221,9 @@ export const AccountsTable: React.FC<AccountsTableProps> = ({
                     <img
                       src={account.csmAvatar}
                       alt={account.csmName}
-                      style={{ width: '26px', height: '26px', borderRadius: '50%', objectFit: 'cover' }}
+                      style={{ width: '22px', height: '22px', borderRadius: '50%', objectFit: 'cover' }}
                     />
-                    <div style={{ fontSize: '0.8rem', color: '#fff', fontWeight: 500 }}>
+                    <div style={{ fontSize: '0.8rem', color: '#f8fafc', fontWeight: 400 }}>
                       {account.csmName}
                     </div>
                   </div>
@@ -267,18 +233,16 @@ export const AccountsTable: React.FC<AccountsTableProps> = ({
                   <div
                     style={{
                       fontSize: '0.76rem',
-                      color: 'var(--text-muted)',
+                      color: '#94a3b8',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
                       whiteSpace: 'nowrap',
-                      background: 'rgba(255, 46, 76, 0.08)',
+                      background: '#18191d',
                       padding: '4px 8px',
-                      borderRadius: '6px',
-                      border: '1px solid rgba(255, 46, 76, 0.2)',
+                      borderRadius: '4px',
                     }}
                     title={account.aiSummary}
                   >
-                    <Sparkles size={12} color="#ff2e4c" style={{ display: 'inline', marginRight: '4px' }} />
                     {account.aiSummary}
                   </div>
                 </td>
@@ -290,10 +254,10 @@ export const AccountsTable: React.FC<AccountsTableProps> = ({
                       onSelectAccount(account);
                     }}
                     className="btn-primary"
-                    style={{ fontSize: '0.78rem', padding: '0.35rem 0.75rem', borderRadius: '6px' }}
+                    style={{ fontSize: '0.78rem', padding: '0.3rem 0.7rem' }}
                   >
                     Investigate
-                    <ChevronRight size={14} />
+                    <ChevronRight size={13} />
                   </button>
                 </td>
               </tr>
